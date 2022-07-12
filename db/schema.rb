@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2022_07_12_210757) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "text"
-    t.bigint "user_id", 
-    t.bigint "coffee_id", 
+    t.bigint "user_id", null: false
+    t.bigint "coffee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coffee_id"], name: "index_reviews_on_coffee_id"
