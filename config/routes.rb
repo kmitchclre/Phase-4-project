@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :reviews
-  # resources :users
+  resources :users, only:[:show, :create]
   resources :coffees
 
   post "/signup", to: "users#create"
