@@ -6,14 +6,13 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        review = find_review
+        review = Review.find(params[:id])
         render json: review, status: :ok
     end
 
     def update
-        review = find_review
-        review.update!(review_params)
-        render json: review, status: :ok
+        review = Review.find(params[:id])
+        render json: review.update!(review_params), status: :created
     end
     
     def create
@@ -22,16 +21,12 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        review = find_review
+        review = Review.find(params[:id])
         review.destroy
         head :no_content
     end
 
     private
-
-    def find_review
-        Review.find(params[:id])
-    end
 
     def review_params
         params.permit(:text, :user_id, :coffee_id)

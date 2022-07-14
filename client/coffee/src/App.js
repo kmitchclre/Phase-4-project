@@ -8,6 +8,8 @@ import {
 import CoffeePage from "./components/CoffeePage";
 import Login from "./components/Login";
 import SignUpForm from "./components/SignUpForm";
+import ReviewList from "./components/ReviewList";
+import About from "./components/About";
 import { useAuth, AuthProvider } from "./useAuth";
 
 const PrivateRoute = ({ redirectPath, children }) => {
@@ -52,6 +54,8 @@ function App() {
               }
             />
             <Route path="/SignUpForm" element={<SignUpForm />} />
+            <Route path="/ReviewList" element={<ReviewList />} />
+            <Route path="/About" element={<About />} />
           </Routes>
         </Router>
       </div>
