@@ -25,7 +25,6 @@ const PrivateRoute = ({ redirectPath, children }) => {
 function App() {
   // const [currentUser, setCurrentUser] = useState(null);
   const [coffeeData, setCoffeeData] = useState([]);
-
   //.then((res) => res.json())
   //.then((data) => data);
 
@@ -41,28 +40,30 @@ function App() {
   // const user = false;
 
   return (
-    <AuthProvider>
-      <div className="App">
-        {/* <NavBar /> */}
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route
-              path="/CoffeePage"
-              element={
-                <PrivateRoute redirectPath="/">
-                  <CoffeePage />
-                </PrivateRoute>
-              }
-            />
-            <Route exact path="/SignUpForm" element={<SignUpForm />} />
-            <Route exact path="/ReviewList" element={<ReviewList />} />
-            <Route exact path="/About" element={<About />} />
-            <Route exact path="/" element={<About />} />
-          </Routes>
-        </Router>
-      </div>
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <div className="App">
+          <Router>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route
+                path="/CoffeePage"
+                element={
+                  <PrivateRoute redirectPath="/">
+                    <CoffeePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route exact path="/SignUpForm" element={<SignUpForm />} />
+              <Route exact path="/ReviewList" element={<ReviewList />} />
+              <Route exact path="/About" element={<About />} />
+              <Route exact path="/" element={<About />} />
+            </Routes>
+          </Router>
+        </div>
+      </AuthProvider>
+    </>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Coffees from "./Coffees";
-import NavBar from "./NavBar";
+import background from "../assets/background.jpg";
 
 function CoffeePage() {
   const [coffees, setCoffees] = useState([]);
@@ -24,10 +24,9 @@ function CoffeePage() {
   //   })
   // }, []);
   return (
-    <main>
-      <NavBar />
+    <div>
       <Coffees coffees={coffees} />
-    </main>
+    </div>
   );
 }
 
