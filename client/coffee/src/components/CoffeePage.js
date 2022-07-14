@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 function CoffeePage() {
   const [coffees, setCoffees] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/coffees", {
+    fetch("/coffees", {
       mode: "cors",
       credentials: "include",
     })

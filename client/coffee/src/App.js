@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import SignUpForm from "./components/SignUpForm";
 import ReviewList from "./components/ReviewList";
 import About from "./components/About";
+import NavBar from "./components/NavBar";
 import { useAuth, AuthProvider } from "./useAuth";
 
 const PrivateRoute = ({ redirectPath, children }) => {
@@ -42,6 +43,7 @@ function App() {
   return (
     <AuthProvider>
       <div className="App">
+        {/* <NavBar /> */}
         <Router>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -53,9 +55,10 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/SignUpForm" element={<SignUpForm />} />
-            <Route path="/ReviewList" element={<ReviewList />} />
-            <Route path="/About" element={<About />} />
+            <Route exact path="/SignUpForm" element={<SignUpForm />} />
+            <Route exact path="/ReviewList" element={<ReviewList />} />
+            <Route exact path="/About" element={<About />} />
+            <Route exact path="/" element={<About />} />
           </Routes>
         </Router>
       </div>
