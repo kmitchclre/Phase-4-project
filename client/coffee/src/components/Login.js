@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import coffee from "../assets/coffee.jpg";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../useAuth";
 
 function Login({ onLogin }) {
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState(null);
+  const auth = useAuth();
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    auth.signin(
+      username,
+      password,
+      () => {
+        navigate("/CoffeePage", { replace: true });
       },
-      body: JSON.stringify({ username, password }),
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((user) => onLogin(user));
-      } else {
-        res.json().then((err) => setErrors(err.errors));
+      (error) => {
+        setError(error.error.login);
       }
-    });
+    );
+
+    //navigate("/CoffeePage");
   }
 
   function handleSignup() {
@@ -57,6 +58,9 @@ function Login({ onLogin }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            {error && (
+              <div className="bg-red-200 text-red-600 py-2 px-4">{error}</div>
+            )}
             <button className="w-full py-2 my-4 bg-orange-400 hover:bg-orange-300">
               Sign In
             </button>

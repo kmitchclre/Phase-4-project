@@ -4,6 +4,6 @@ class FallbackController < ActionController::Base
 
   def index
     # React app index page
-    render file: 'client/client/public/index.html'
+    render file: 'client/coffee/public/index.html'
   end
 end

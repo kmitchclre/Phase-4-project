@@ -18,6 +18,10 @@ coffee2 = Coffee.create(name: "De La Paz", description: "Light tasting blend wit
     
 coffee3 = Coffee.create(name: "Portland Organic French", description: "Rich, robust, with a very sweet aftertaste.", img_url: "https://bottomless.imgix.net/Portland_FrenchOrganic.png?auto=compress&w=300", roast: "French Roast")
 
+coffee4 = Coffee.create(name: "Caffe Luna", description: "Robust aromas of bittersweet chocolate complimented by flavors of vanilla nd maple", img_url: "https://bottomless.imgix.net/Vita_03.png?auto=compress&w=300", roast: "Dark Roast")
+
+coffee5 = Coffee.create(name: "Adamns Avenue", description: "Roasted to bring out notes of cardamon, toasted coconut, and molasses that this blind exudes", img_url: "https://bottomless.imgix.net/westbean-adamsave.png?auto=compress&w=300", roast: "Mediu")
+
 
 puts "🤵 Seeding reviews..."
 review1 = Review.create(text: "Lovely taste while not being overly harsh", coffee_id: coffee1.id, user_id: 1)
