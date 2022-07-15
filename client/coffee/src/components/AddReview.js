@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-function AddReview({ user, reviews, setReviews }) {
+function AddReview({ user, reviews, setReviews, id }) {
   const [text, setText] = useState("");
+  const [deletereview, setDeletereview] = useState([]);
 
   function handleReviewChange(e) {
     setText(e.target.value);
@@ -28,15 +29,16 @@ function AddReview({ user, reviews, setReviews }) {
   }
 
   return (
-    <form className="grid place-items-center" onSubmit={handleSubmit}>
+    <form className="mx-10 mt-10 gap-8" onSubmit={handleSubmit}>
       <div className="shadow-xl">
-        <input
+        <textarea
           name="review"
           type="string"
           value={text}
           placeholder="Write a review..."
           onChange={handleReviewChange}
-        ></input>
+        ></textarea>
+        <br />
         <button>Submit</button>
       </div>
     </form>

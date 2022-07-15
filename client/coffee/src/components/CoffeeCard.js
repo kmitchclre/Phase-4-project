@@ -3,9 +3,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 function CoffeeCard({ coffee }) {
   const { name, description, img_url, roast, id } = coffee;
+  let navigate = useNavigate();
 
   function handleClick() {
-    Navigate(`/CoffeePage/${id}`);
+    navigate(`/reviewlist/${id}`);
   }
 
   return (
