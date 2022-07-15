@@ -19,7 +19,7 @@ function Login({ onLogin }) {
         navigate("/CoffeePage", { replace: true });
       },
       (error) => {
-        setError(error.error.login);
+        setError(error.message);
       }
     );
 
@@ -64,11 +64,15 @@ function Login({ onLogin }) {
             <button className="w-full py-2 my-4 bg-orange-400 hover:bg-orange-300">
               Sign In
             </button>
-            <p className="text-center">Forgot Username or Password?</p>
           </form>
-          <button onClick={handleSignup} className="text-center">
-            Sign Up
-          </button>
+          <div className="grid place-items-center">
+            <button
+              onClick={handleSignup}
+              className="bg-orange-200 hover:bg-orange-300 text-white font-bold py-2 px-4 rounded"
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
       </div>
     </div>

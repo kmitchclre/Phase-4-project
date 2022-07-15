@@ -1,7 +1,17 @@
 class ReviewsController < ApplicationController
 
     def index
-        reviews = Review.all
+        reviews = []
+        if params[:coffee_id] && params[:coffee_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+            coffee = Coffee.find(params[:coffee_id])
+            if coffee 
+              reviews = coffee.reviews
+            else
+                render json: {message: "not found"}, status: 404
+            end
+        else
+            reviews = Review.all
+        end
         render json: reviews, status: :ok
     end
 

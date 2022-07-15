@@ -10,10 +10,10 @@ function AddReview({ user, reviews, setReviews, id }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    const coffee = JSON.parse(localStorage.getItem("coffee"));
     const newReviewObj = {
       text: text,
-      coffee_id: 1,
+      coffee_id: coffee.id,
       user_id: user.id,
     };
     fetch("reviews", {
@@ -28,9 +28,18 @@ function AddReview({ user, reviews, setReviews, id }) {
       });
   }
 
+  // useEffect(() => {
+  //   return () => {
+  //     localStorage.removeItem("coffee");
+  //   };
+  // }, []);
+
   return (
-    <form className="mx-10 mt-10 gap-8" onSubmit={handleSubmit}>
-      <div className="shadow-xl">
+    <form
+      className="px-4 pb-10 grid place-items-center w-full"
+      onSubmit={handleSubmit}
+    >
+      <div className="">
         <textarea
           name="review"
           type="string"

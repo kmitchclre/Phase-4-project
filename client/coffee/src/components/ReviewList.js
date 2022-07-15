@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReviewCard from "react";
 import Reviews from "./Reviews";
 import AddReview from "./AddReview";
@@ -7,10 +7,22 @@ import { useAuth, AuthProvider } from "../useAuth";
 function ReviewList() {
   const [reviews, setReviews] = useState([]);
   const auth = useAuth();
+
   useEffect(() => {
-    fetch("/reviews")
+    const coffee = JSON.parse(localStorage.getItem("coffee"));
+    console.log("coffee", coffee);
+    fetch(`/reviews?coffee_id=${coffee && coffee.id}`)
       .then((r) => r.json())
-      .then((reviews) => setReviews(reviews));
+      .then((reviews) => {
+        console.log("reviews", reviews);
+        setReviews(reviews);
+      });
+
+    // return () => {
+    //   console.log("component unmount here running");
+    //   localStorage.removeItem("coffee");
+    //   setReviews([]);
+    // };
   }, []);
 
   function handleUpdateReview(updatedReview) {

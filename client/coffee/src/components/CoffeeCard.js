@@ -5,8 +5,10 @@ function CoffeeCard({ coffee }) {
   const { name, description, img_url, roast, id } = coffee;
   let navigate = useNavigate();
 
-  function handleClick() {
-    navigate(`/reviewlist/${id}`);
+  function handleClick(e) {
+    e.preventDefault();
+    localStorage.setItem("coffee", JSON.stringify(coffee));
+    navigate("/reviewlist");
   }
 
   return (

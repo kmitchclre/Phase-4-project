@@ -34,22 +34,25 @@ function ReviewCard({ review, onRemoveReview, onUpdateReview }) {
   }
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg text-gray-600 text-base ">
-      <p>{name}</p>
-      <p>{username}</p>
+    <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <div className="border rounded">{username}</div>
+      <br />
       <p>{text}</p>
+      <img src={img_url} />
       {/* <p>{text}</p> */}
-      <button className="" onClick={handleDelete}>
-        Delete review
-      </button>
+      <br />
       <form onSubmit={handleUpdateReview}>
         <input
+          class="placeholder:italic"
           type="string"
           placeholder="Edit review..."
           onChange={(e) => setUpdatedReview(e.target.value)}
         />
         <button type="submit">Change</button>
       </form>
+      <button className="hover:bg-gray-300" onClick={handleDelete}>
+        Delete review
+      </button>
     </div>
   );
 }

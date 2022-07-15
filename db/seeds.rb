@@ -34,7 +34,7 @@ puts "🤵 Seeding reviews..."
 review1 = Review.create(text: "Lovely taste while not being overly harsh.", coffee_id: coffee1.id, user_id: 1)
 review2 = Review.create(text: "Slightly smoky blend with a sweet aftertaste.", coffee_id: coffee2.id, user_id: 2)
 review3 = Review.create(text: "Way too sweet.", coffee_id: coffee3.id, user_id: 3)
-review4 = Review.create(text: "Would highely recommend this one!", coffee_id: coffee4.id, user_id: 4)
+review4 = Review.create(text: ' Would highely recommend this one!', coffee_id: coffee4.id, user_id: 4)
 review5 = Review.create(text: "Great flavor profile.", coffee_id: coffee5.id, user_id: 5)
 review6 = Review.create(text: "Amazing aroma.", coffee_id: coffee6.id, user_id: 6)
 

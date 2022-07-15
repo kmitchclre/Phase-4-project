@@ -1,10 +1,11 @@
 import React from "react";
-import { Navigate, NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../useAuth";
 import { FiCoffee } from "react-icons/fi";
 
 function NavBar() {
   const auth = useAuth();
+  const navigate = useNavigate();
   return (
     <>
       {!auth.user ? (
@@ -24,10 +25,13 @@ function NavBar() {
                 {/* <button>
                   <NavLink to="/About">About</NavLink>
                 </button> */}
-                <button>
-                  <NavLink exact to="/reviewlist">
-                    Reviews
-                  </NavLink>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("coffee");
+                    navigate("/reviewlist");
+                  }}
+                >
+                  Reviews
                 </button>
                 <button
                   onClick={(e) => {

@@ -17,9 +17,14 @@ function AuthProvider({ children }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUser(data);
-        window.localStorage.setItem("user", JSON.stringify(data));
-        callback();
+        console.log(data, "hello");
+        if (data.error === true) {
+          errorCbk(data);
+        } else {
+          setUser(data);
+          window.localStorage.setItem("user", JSON.stringify(data));
+          callback();
+        }
       })
       .catch((e) => errorCbk(e));
   };
